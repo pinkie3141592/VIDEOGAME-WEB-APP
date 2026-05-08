@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Juegos</title>
+</head>
+<body>
+
+    <h1>Juegos</h1>
+
+    <button onclick="cargarJuegos()">Cargar Juegos</button>
+
+    <ul id="listaJuegos"></ul>
+
+    <h2>Agregar Juego</h2>
+
+    <input type="number" id="id" placeholder="ID">
+    <input type="text" id="titulo" placeholder="Titulo">
+    <input type="number" id="precio" placeholder="Precio">
+    <input type="text" id="fechaSalida" placeholder="Fecha">
+    <input type="text" id="descripcion" placeholder="Descripcion">
+
+    <button onclick="agregarJuego()">Agregar</button>
+
+    <script>
+
+        async function cargarJuegos(){
+
+            const response = await fetch('/juegos');
+
+            const juegos = await response.json();
+
+            const lista = document.getElementById('listaJuegos');
+
+            lista.innerHTML = '';
+
+            juegos.forEach(juego => {
+                const li = document.createElement('li');
+
+                li.innerHTML = `
+                    ${juego.id} - ${juego.titulo}
+
+                    <button onclick="eliminarJuego(${juego.id})">
+                        Eliminar
+                    </button>
+                
+                `;
+
+                lista.appendChild(li);
+
+            })
+
+        }
+
+        async function agregarJuego(){
+            
+            const juego = {
+                id: document.getElementById('id').value,
+                titulo: document.getElementById('titulo').value,
+                precio: document.getElementById('precio').value,
+                fechaSalida: document.getElementById('fechaSalida').value,
+                descripcion: document.getElementById('descripcion').value,
+            };
+
+            await fetch('/juegos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(juego)
+            });
+
+            cargarJuegos();
+        }
+
+        async function eliminarJuego(id){
+
+            await fetch(`/juegos/${id}`, {
+                method: 'DELETE'
+            });
+
+            cargarJuegos();
+
+        }
+
+    </script>
+
+</body>
+</html>

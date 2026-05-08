@@ -14,7 +14,6 @@ public class Juego {
     private String titulo;
     private BigDecimal precio;
 
-    @Column(name = "fechaSalida")
     private String fechaSalida;
     private String descripcion;
 
@@ -46,6 +45,7 @@ public class Juego {
         this.precio = precio;
     }
 
+    @Column(name = "fechaSalida")
     public String getFechaSalida() {
         return fechaSalida;
     }

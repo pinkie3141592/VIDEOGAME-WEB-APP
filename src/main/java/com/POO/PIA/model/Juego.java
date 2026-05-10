@@ -1,7 +1,7 @@
 package com.POO.PIA.model;
 
 import jakarta.persistence.*;
-import java.lang.annotation.Inherited;
+import java.lang.annotation.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -14,6 +14,7 @@ public class Juego {
     private String titulo;
     private BigDecimal precio;
 
+    @Column(name = "fecha_salida")
     private String fechaSalida;
     private String descripcion;
 
@@ -45,7 +46,6 @@ public class Juego {
         this.precio = precio;
     }
 
-    @Column(name = "fechaSalida")
     public String getFechaSalida() {
         return fechaSalida;
     }

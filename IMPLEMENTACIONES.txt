@@ -1,0 +1,9 @@
+IMPLEMENTACIONES
+
+
+-> separar cada menu
+	cuando se seleccione una opción, se limpia la pantalla
+-> update menus
+	-> usuarios (crear o administrar)
+		-> ver sus juego
+Input de datos

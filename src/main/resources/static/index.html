@@ -3,26 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <title>CRUD Juegos</title>
+
+    <style>
+        .seccion{
+            display: none;
+        }
+
+        .activa{
+            display: block;
+        }
+
+        button{
+            margin: 5px;
+        }
+    </style>
+
 </head>
 <body>
 
-    <h1>Juegos</h1>
+    <div id="login">
 
-    <button onclick="cargarJuegos()">Cargar Juegos</button>
+        <h1>Iniciar Sesión</h1>
 
-    <ul id="listaJuegos"></ul>
+        <input type="text" id="loginNombre" placeholder="Nombre">
 
-    <h2>Agregar Juego</h2>
+        <input type="password" id="loginPassword" placeholder="Contraseña">
 
-    <input type="number" id="id" placeholder="ID">
-    <input type="text" id="titulo" placeholder="Titulo">
-    <input type="number" id="precio" placeholder="Precio">
-    <input type="text" id="fechaSalida" placeholder="Fecha">
-    <input type="text" id="descripcion" placeholder="Descripcion">
+        <button onclick="iniciarSesion()">
+            Entrar
+        </button>
 
-    <button onclick="agregarJuego()">Agregar</button>
+    </div>
+
+    <h1>Menu CRUD</h1>
+
+    <button onclick="mostrarSeccion('juegos')">
+        Juegos
+    </button>
+
+    <button onclick="mostrarSeccion('usuarios')">
+        Usuarios
+    </button>
+
+    <button onclick="mostrarSeccion('publishers')">
+        Publishers
+    </button>
+
+    <button onclick="mostrarSeccion('resenas')">
+        Reseñas
+    </button>
+
+
+
+    <!--SECCION JUEGOS-->
+    <div id="juegos" class="seccion">
+        
+        <h1>Juegos</h1>
+
+        <button onclick="cargarJuegos()">Cargar Juegos</button>
+
+        <ul id="listaJuegos"></ul>
+
+        <h2>Agregar Juego</h2>
+
+        <input type="number" id="id" placeholder="ID">
+        <input type="text" id="titulo" placeholder="Titulo">
+        <input type="number" id="precio" placeholder="Precio">
+        <input type="text" id="fechaSalida" placeholder="Fecha">
+        <input type="text" id="descripcion" placeholder="Descripcion">
+
+        <button onclick="agregarJuego()">Agregar</button>
+
+        
+    </div>
+
+
+    <!-- SECCION USUARIOS -->
+    <div id="usuarios" class="seccion">
+
+        <h1>Usuarios</h1>
+
+        <button onclick="cargarUsuarios()">Cargar Usuarios</button>
+
+        <ul id="listaUsuarios"></ul>
+
+        <h2>Agregar Usuario</h2>
+
+        <input type="number" id="id" name="id" placeholder="ID">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <input type="text" id="pais" name="pais" placeholder="País">
+        <input type="email" id="correo" name="correo" placeholder="Correo">
+        <input type="password" id="password" name="password" placeholder="Contraseña">
+        <input type="date" id="fechaCreacion" name="fechaCreacion" required>
+
+        <button onclick="agregarUsuario()">Agregar</button>
+
+    </div>
+
+
+    <!-- SECCION PUBLISHERS -->
+    <div id="publishers" class="seccion">
+
+        <h1>Publishers</h1>
+
+        <button onclick="cargarPublishers()">Cargar Publishers</button>
+
+        <ul id="listaPublishers"></ul>
+
+        <h2>Agregar Publisher</h2>
+
+        <input type="text" id="publisher-sede" placeholder="Sede">
+        <input type="text" id="publisher-nombre" placeholder="Nombre">
+        <input type="text" id="publisher-sitioWeb" placeholder="Sitio web">
+
+        <button onclick="agregarPublisher()">Agregar</button>
+
+    </div>
+
+
+    <!-- SECCION RESENAS -->
+    <div id="resenas" class="seccion">
+
+        <h1>Reseñas</h1>
+
+        <select id="selectorJuego" onchange="mostrarJuegoSeleccionado()">
+            <option value ="">Selecciona un juego</option>
+        </select>
+
+        <div id="infoJuego">
+
+        </div>
+
+        <textarea
+            id=""textoResena"
+            placeholder="Escribe tu reseña aqui..."
+            rows="10"
+            cols="50">
+        </textarea>
+
+
+        <br><br>
+
+        <button onclick="guardarResena()">
+            Publicar reseña
+        </button>
+
+    </div>
+
 
     <script>
+
+        function mostrarSeccion(idSeccion){
+
+            const secciones = document.querySelectorAll('.seccion');
+
+            secciones.forEach(seccion => {
+                seccion.classList.remove('activa');
+
+            });
+
+            document.getElementById(idSeccion).classList.add('activa');
+
+        }
 
         async function cargarJuegos(){
 
@@ -41,6 +183,60 @@
                     ${juego.id} - ${juego.titulo}
 
                     <button onclick="eliminarJuego(${juego.id})">
+                        Eliminar
+                    </button>
+                
+                `;
+
+                lista.appendChild(li);
+
+            })
+
+        }
+
+        async function cargarUsuarios(){
+
+            const response = await fetch('/usuarios');
+            const usuarios = await response.json();
+            const lista = document.getElementById('listaUsuarios');
+
+            lista.innerHTML = '';
+
+            usuarios.forEach(usuario => {
+                const li = document.createElement('li');
+
+                li.innerHTML = `
+                    ${usuario.id} - ${usuario.nombre}
+
+                    <button onclick="eliminarUsuario(${usuario.id})">
+                        Eliminar
+                    </button>
+                
+                `;
+
+                lista.appendChild(li);
+
+            })
+
+        }
+
+        async function cargarPublishers(){
+
+            const response = await fetch('/publishers');
+
+            const publishers = await response.json();
+
+            const lista = document.getElementById('listaPublishers');
+
+            lista.innerHTML = '';
+
+            publishers.forEach(publisher => {
+                const li = document.createElement('li');
+
+                li.innerHTML = `
+                    ${publisher.id} - ${publisher.nombre}
+
+                    <button onclick="eliminarPublisher(${publisher.id})">
                         Eliminar
                     </button>
                 
@@ -73,6 +269,47 @@
             cargarJuegos();
         }
 
+        async function agregarUsuario(){
+            
+            const usuario = {
+                id: parseInt(document.getElementById('id')).value,
+                nombre: document.getElementById('nombre').value,
+                correo: document.getElementById('correo').value,
+                pais: document.getElementById('pais').value,
+                fechaCreacion: document.getElementById('fechaCreacion').value,
+                password: document.getElementById('password').value,
+            };
+
+            await fetch('/usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(usuario)
+            });
+
+            cargarUsuarios();
+        }
+
+        async function agregarPublisher(){
+            
+            const publisher = {
+                sede: document.getElementById('publisher-sede').value,
+                nombre: document.getElementById('publisher-nombre').value,
+                sitioWeb: document.getElementById('publisher-sitioWeb').value,
+            };
+
+            await fetch('/publishers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(publisher)
+            });
+
+            cargarPublishers();
+        }
+
         async function eliminarJuego(id){
 
             await fetch(`/juegos/${id}`, {
@@ -83,7 +320,65 @@
 
         }
 
+        async function eliminarUsuario(id){
+
+            await fetch(`/usuarios/${id}`, {
+                method: 'DELETE'
+            });
+
+            cargarUsuarios();
+
+        }
+
+        async function eliminarPublisher(id){
+
+            await fetch(`/publishers/${id}`, {
+                method: 'DELETE'
+            });
+
+            cargarPublishers();
+        }
+
+        async function cargarJuegosSelector(){
+            const response = await fetch(`/juegos`);
+            const juegos = await response.json();
+
+            const selector = document.getElementById('selectorJuego');
+
+            juegos.forEach(juego => {
+
+                const option = document.createElement('option');
+
+                option.value = juego.id;
+                option.textContent = juego.titulo;
+
+                selector.appendChild(option);
+            });
+        }
+
+        async function mostrarJuegoSeleccionado(){
+
+            const id = document.getElementById('selectorJuego').value;
+            
+            if(id == "") 
+                return;
+
+            const response = await fetch(`/juegos/${id}`);
+            const juego = await response.json();
+
+            document.getElementById('infoJuego').innerHTML = `
+                <h2>${juego.titulo}</h2>
+                <p>Precio: $${juego.precio}</p>
+                <p>${juego.descripcion}</p>
+            `;
+        }
+
+        window.onload = function() {
+            cargarJuegosSelector();
+        }
+
     </script>
+
 
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseñas</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>    
+    
+
+
+    <h1>Reseñas</h1>
+
+    <select id="selectorJuego" onchange="mostrarJuegoSeleccionado()">
+        <option value ="">Selecciona un juego</option>
+    </select>
+
+    <div id="infoJuego">
+
+    </div>
+
+    <textarea
+        id="textoResena"
+        placeholder="Escribe tu reseña aqui..."
+        rows="10"
+        cols="50">
+    </textarea>
+
+
+    <br><br>
+
+    <button onclick="guardarResena()">
+        Publicar reseña
+    </button>
+
+    <br><br>
+
+    <a href="menuAdministrador.html">
+        <button>Regresar</button>
+    </a>
+
+
+    <script src="js/resenas.js"></script>
+
+</body>
+</html>

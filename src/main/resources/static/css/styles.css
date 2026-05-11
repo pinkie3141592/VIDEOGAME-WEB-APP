@@ -1,0 +1,12 @@
+
+.seccion{
+    display: none;
+}
+
+.activa{
+    display: block;
+}
+
+button{
+    margin: 5px;
+}

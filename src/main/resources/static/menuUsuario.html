@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseñas</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>    
+
+    <h1>MENU DE USUARIO</h1>
+
+    <br>
+    
+    <a href="escribirResenas.html">
+        <button>Escribir reseñas</button>
+    </a>
+
+    <a href="Tienda.html">
+        <button>Tienda de juegos</button>
+    </a>
+
+    <br>
+
+    <h2>Biblioteca de Juegos</h2>
+
+    <div th:each="juego : ${juegos}">
+
+        <h3 th:text="${juego.titulo}"></h3>
+
+        <p th:text="${juego.descripcion}"></p>
+
+        <hr>
+
+        <br><br>
+    </div>
+
+    <a href="login.html">
+        <button>Login page</button>
+    </a>
+
+    
+</body>
+</html>

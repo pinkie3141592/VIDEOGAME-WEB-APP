@@ -3,6 +3,7 @@ package com.POO.PIA.controller;
 import com.POO.PIA.repository.BibliotecaRepository;
 import com.POO.PIA.model.*;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class BibliotecaController {
 
     //Read By ID
     @GetMapping("/{juegosId}/{usuariosId}")
-    public Optional<Biblioteca> getOne(@PathVariable Long juegosId, @PathVariable Long usuariosId){
+    public Optional<Biblioteca> getOne(@PathVariable Integer juegosId, @PathVariable Integer usuariosId){
        
         BibliotecaId id = new BibliotecaId();
         id.setJuegosId(juegosId);
@@ -43,7 +44,7 @@ public class BibliotecaController {
 
     //DELETE
     @DeleteMapping("/{juegosId}/{usuariosId}")
-    public void delete(@PathVariable Long juegosId, @PathVariable Long usuariosId){
+    public void delete(@PathVariable Integer juegosId, @PathVariable Integer usuariosId){
 
         BibliotecaId id = new BibliotecaId();
         id.setJuegosId(juegosId);

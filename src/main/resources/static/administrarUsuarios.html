@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <h1>Usuarios</h1>
+
+    <button onclick="cargarUsuarios()">Cargar Usuarios</button>
+
+    <ul id="listaUsuarios"></ul>
+
+    <h2>Agregar Usuario</h2>
+
+    <input type="number" id="usuario-id" name="id" placeholder="ID">
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+    <input type="text" id="pais" name="pais" placeholder="País">
+    <input type="email" id="correo" name="correo" placeholder="Correo">
+    <input type="password" id="password" name="password" placeholder="Contraseña">
+    <input type="date" id="fechaCreacion" name="fechaCreacion" required>
+
+    <button onclick="agregarUsuario()">Agregar</button>
+
+    <br><br>
+
+    <a href="menuAdministrador.html">
+        <button>Regresar</button>
+    </a>
+
+    <script src="js/usuarios.js"></script>
+
+
+</body>
+</html>

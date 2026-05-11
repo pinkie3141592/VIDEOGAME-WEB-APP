@@ -10,25 +10,25 @@ import java.lang.annotation.*;
 @Embeddable
 public class BibliotecaId implements Serializable{
 
-    private Long juegosId;
-    private Long usuariosId;
+    private Integer juegosId;
+    private Integer usuariosId;
 
-    public void setJuegosId(Long juegosId){
+    public void setJuegosId(Integer juegosId){
 
         this.juegosId = juegosId;
     }
 
-    public void setUsuariosId(Long usuariosId){
+    public void setUsuariosId(Integer usuariosId){
 
         this.usuariosId=usuariosId;
     }
 
-    public Long getJuegosId(){
+    public Integer getJuegosId(){
 
         return juegosId;
     }
 
-    public Long getUsuariosId(){
+    public Integer getUsuariosId(){
 
         return usuariosId;
     }

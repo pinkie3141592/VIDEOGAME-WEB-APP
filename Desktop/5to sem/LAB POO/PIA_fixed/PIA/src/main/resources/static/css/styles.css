@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root{
+    --rosa-fondo: #fff2f8;
+    --rosa-card: #ffffff;
+    --rosa-principal: #ff77b7;
+    --rosa-fuerte: #e84f9b;
+    --rosa-suave: #ffd6e9;
+    --texto: #503042;
+    --sombra: 0 14px 35px rgba(232, 79, 155, 0.18);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at top left, #ffe0ef 0, transparent 32%),
+        radial-gradient(circle at bottom right, #ffd1e7 0, transparent 28%),
+        var(--rosa-fondo);
+    padding: 32px;
+}
+
+h1{
+    text-align: center;
+    color: var(--rosa-fuerte);
+    margin: 10px 0 28px;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2, h3{
+    color: var(--rosa-fuerte);
+}
+
+a{
+    color: var(--rosa-fuerte);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+input, select, textarea{
+    width: min(100%, 420px);
+    border: 2px solid var(--rosa-suave);
+    border-radius: 18px;
+    padding: 12px 15px;
+    margin: 8px 0;
+    font: inherit;
+    color: var(--texto);
+    background: #fff;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus{
+    border-color: var(--rosa-principal);
+    box-shadow: 0 0 0 4px rgba(255, 119, 183, 0.18);
+}
+
+button{
+    margin: 8px 5px;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    font: inherit;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-fuerte));
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(232, 79, 155, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(232, 79, 155, 0.32);
+}
+
+button:active{
+    transform: translateY(0);
+}
+
+ul, ol{
+    max-width: 900px;
+    margin: 18px auto;
+    padding: 0;
+    list-style: none;
+}
+
+li, #infoJuego, .seccion, form, table{
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 214, 233, 0.9);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+}
+
+li{
+    padding: 16px 18px;
+    margin: 12px 0;
+}
+
+#infoJuego{
+    width: min(100%, 520px);
+    margin: 22px auto 8px;
+    padding: 20px;
+}
+
+form, .seccion{
+    width: min(100%, 760px);
+    margin: 20px auto;
+    padding: 24px;
+}
+
+.seccion{
+    display: none;
+}
+
+.activa{
+    display: block;
+}
+
+table{
+    width: min(100%, 980px);
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th, td{
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--rosa-suave);
+}
+
+th{
+    color: var(--rosa-fuerte);
+    background: #fff6fa;
+}
+
+body > input, body > select, body > textarea{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body > button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardReview{
+
+    background-color: #ffd6ec;
+
+    padding: 15px;
+
+    margin-top: 15px;
+
+    border-radius: 15px;
+
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+
+    color: #5c0040;
+}
+
+#listaJuegos{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+.cardJuego{
+
+    background-color: #ffd6ec;
+
+    width: 300px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+
+    color: #5c0040;
+}
+
+.cardJuego h2{
+
+    margin-top: 0;
+}
+
+.btnCalificacion{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.btnCalificacion.calificacionSeleccionada{
+    background: #c21875;
+    transform: scale(1.1);
+    box-shadow: 0 0 18px rgba(194, 24, 117, 0.6);
+}
+
+.cardJuego{
+    cursor: pointer;
+}
+
+.cardJuego:hover{
+    transform: translateY(-4px);
+}

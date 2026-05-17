@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrar Biblioteca</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <h1>Administrar Biblioteca</h1>
+
+    <input
+        type="email"
+        id="correoUsuario"
+        placeholder="Correo del usuario">
+
+    <button onclick="cargarBibliotecaUsuario()">
+        Buscar biblioteca
+    </button>
+
+    <br><br>
+
+    <select id="selectorJuego" onchange="mostrarJuegoSeleccionado()">
+        <option value="">
+            Selecciona un juego
+        </option>
+    </select>
+
+    <div id="infoJuego"></div>
+
+    <br><br>
+
+    <button onclick="agregarJuegoUsuario()">
+        Agregar juego a usuario
+    </button>
+
+    <h2>Biblioteca del usuario</h2>
+    <ul id="listaBibliotecaUsuario"></ul>
+
+    <script src="js/validaciones.js"></script>
+    <script src="js/utilidades.js"></script>
+    <script src="js/administrarBibliotecas.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juegos</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <h1>Juegos</h1>
+
+    <br><br>
+
+    <button onclick="cargarJuegos()">
+        Cargar Juegos
+    </button>
+
+    <ul id="listaJuegos"></ul>
+
+    <h2>Agregar Juego</h2>
+
+    <input type="text" id="titulo" placeholder="Titulo">
+    <input type="number" id="precio" placeholder="Precio">
+    <input type="date" id="fechaSalida">
+    <input type="text" id="descripcion" placeholder="Descripcion">
+
+    <button onclick="agregarJuego()">
+        Agregar
+    </button>
+
+    <br><br>
+
+    <a href="menuAdministrador.html">
+        <button>Regresar</button>
+    </a>
+    
+    <script src="js/juegos.js"></script>
+
+</body>
+</html>

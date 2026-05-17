@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseñas</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>    
+    
+    <h1>Reseñas</h1>
+
+    <select id="selectorJuego" onchange="mostrarJuegoSeleccionado()">
+        <option value="">Selecciona un juego</option>
+    </select>
+
+    <div id="infoJuego"></div>
+
+    <p>Calificación:</p>
+    <div>
+        <button class="btnCalificacion" type="button" onclick="seleccionarCalificacion(1, this)">1</button>
+        <button class="btnCalificacion" type="button" onclick="seleccionarCalificacion(2, this)">2</button>
+        <button class="btnCalificacion" type="button" onclick="seleccionarCalificacion(3, this)">3</button>
+        <button class="btnCalificacion" type="button" onclick="seleccionarCalificacion(4, this)">4</button>
+        <button class="btnCalificacion" type="button" onclick="seleccionarCalificacion(5, this)">5</button>
+    </div>
+
+
+    <input type="hidden" id="calificacion" value="">
+
+    <textarea
+        id="textoResena"
+        placeholder="Escribe tu reseña aqui..."
+        rows="10"
+        cols="50">
+    </textarea>
+
+    <br><br>
+
+    <button onclick="guardarResena()">
+        Publicar reseña
+    </button>
+
+    <br><br>
+
+    <a href="menuUsuario.html">
+        <button>Regresar</button>
+    </a>
+
+    <script src="js/utilidades.js"></script>
+    <script src="js/resenas.js"></script>
+
+</body>
+</html>

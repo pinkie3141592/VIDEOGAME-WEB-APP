@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reseñas</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>    
+    
+
+
+    <h1>Reseñas</h1>
+
+    <select id="selectorJuego" onchange="mostrarJuegoSeleccionado(); cargarResenasAdmin();">
+        <option value ="">Selecciona un juego</option>
+    </select>
+
+    <div id="infoJuego">
+
+    </div>
+
+    <h2>Opiniones</h2>
+
+    <div id="listaResenas"></div>
+
+    <script src="js/resenas.js"></script>
+    <script src="js/utilidades.js"></script>
+
+</body>
+</html>
